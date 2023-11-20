@@ -11,7 +11,7 @@
       <video autoplay muted loop class="bg-video" src="bg-1.mp4"></video>
       <nav>
         <div class="logo">
-          <h1>CineCraft Studios</h1>
+          <h1>CineCraft Video Editor</h1>
         </div>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
@@ -22,26 +22,46 @@
           <h1>Contact us</h1>
           <div class="">
             <div class="contact-form">
-              <form action="">
+              <form onsubmit="sendEmail(); reset(); return false;">
                 <div class="row">
                   <div class="input50">
-                    <input type="text" placeholder="First Name" />
+                    <input
+                      type="text"
+                      id="f-name"
+                      name="f-name"
+                      placeholder="First Name" />
                   </div>
                   <div class="input50">
-                    <input type="text" placeholder="Last Name" />
+                    <input
+                      type="text"
+                      name="l-name"
+                      id="l-name"
+                      placeholder="Last Name" />
                   </div>
                 </div>
                 <div class="row">
                   <div class="input50">
-                    <input type="text" placeholder="Email" />
+                    <input
+                      type="text"
+                      id="email"
+                      name="Email"
+                      placeholder="Email" />
                   </div>
                   <div class="input50">
-                    <input type="text" placeholder="Subject" />
+                    <input
+                      name="subject"
+                      id="subject"
+                      type="text"
+                      placeholder="Subject" />
                   </div>
                 </div>
                 <div class="row">
                   <div class="input100">
-                    <textarea class="" placeholder="message"></textarea>
+                    <textarea
+                      id="text"
+                      name="text"
+                      class=""
+                      placeholder="message"></textarea>
                   </div>
                 </div>
                 <div class="row">
@@ -83,6 +103,22 @@
         </div>
       </section>
     </header>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!--  -->
+    <script>
+      function sendEmail() {
+        Email.send({
+          Host: "smtp.elasticemail.com",
+          Port: "2525",
+          Username: "dangiorgel@gmail.com",
+          Password: "D8C9BFF63D99AD7ADD76612F97B6573787FF",
+          To: "dangiorge@gmail.com",
+          From: document.getElementById("email").value,
+          Subject: document.getElementById("subject").value,
+          Body: document.getElementById("text").value,
+        }).then((message) => alert(message, "succesful"));
+      }
+    </script>
   </body>
 </html>
 
